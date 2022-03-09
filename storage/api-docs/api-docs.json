@@ -1,0 +1,281 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Property api Documentation",
+        "description": "Implementation of Swagger with in Laravel",
+        "contact": {
+            "email": "admin@admin.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "0.1"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/api",
+            "description": "Demo API Server"
+        }
+    ],
+    "paths": {
+        "/appartement": {
+            "get": {
+                "tags": [
+                    "Get"
+                ],
+                "summary": "Récupéré la liste des propriétés",
+                "description": "Retourne la liste complète de toute les propriétés.",
+                "operationId": "getAllProperties",
+                "responses": {
+                    "200": {
+                        "description": "Opération réussis",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Non authentifié"
+                    },
+                    "403": {
+                        "description": "Accès refusé"
+                    },
+                    "400": {
+                        "description": "Requête erroné"
+                    },
+                    "404": {
+                        "description": "Page introuvable"
+                    }
+                }
+            }
+        },
+        "/appartement/{id}": {
+            "get": {
+                "tags": [
+                    "Get"
+                ],
+                "summary": "Récupéré une propriétée",
+                "description": "Retourne une propriétée.",
+                "operationId": "getProperty",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "l'id de la propriété",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Opération réussis",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Non authentifié"
+                    },
+                    "403": {
+                        "description": "Accès refusé"
+                    },
+                    "400": {
+                        "description": "Requête erroné"
+                    },
+                    "404": {
+                        "description": "Page introuvable"
+                    }
+                }
+            }
+        },
+        "/appartement/modify/{id}": {
+            "put": {
+                "tags": [
+                    "Modify"
+                ],
+                "summary": "Modifié une propriété",
+                "operationId": "Modify Property",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "l'id de la propriété",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "description": "Proprietes",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "description",
+                                    "size",
+                                    "floor",
+                                    "image",
+                                    "room",
+                                    "price",
+                                    "address",
+                                    "postcode",
+                                    "city"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "type": "string"
+                                    },
+                                    "address": {
+                                        "type": "string"
+                                    },
+                                    "postcode": {
+                                        "type": "string"
+                                    },
+                                    "city": {
+                                        "type": "string"
+                                    },
+                                    "room": {
+                                        "type": "number"
+                                    },
+                                    "price": {
+                                        "type": "number"
+                                    },
+                                    "size": {
+                                        "type": "number"
+                                    },
+                                    "floor": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Page introuvable"
+                    }
+                }
+            }
+        },
+        "/appartement/add": {
+            "post": {
+                "tags": [
+                    "Create"
+                ],
+                "summary": "Ajouter une propriété",
+                "operationId": "AddOneProperty",
+                "requestBody": {
+                    "description": "Proprietes",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "description",
+                                    "image",
+                                    "postcode",
+                                    "city",
+                                    "address",
+                                    "room",
+                                    "price",
+                                    "size",
+                                    "floor"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "type": "string"
+                                    },
+                                    "address": {
+                                        "type": "string"
+                                    },
+                                    "postcode": {
+                                        "type": "string"
+                                    },
+                                    "city": {
+                                        "type": "string"
+                                    },
+                                    "room": {
+                                        "type": "number"
+                                    },
+                                    "price": {
+                                        "type": "number"
+                                    },
+                                    "size": {
+                                        "type": "number"
+                                    },
+                                    "floor": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/appartement/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Delete"
+                ],
+                "summary": "delete one property",
+                "description": "delete one property.",
+                "operationId": "DeleteProperty",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Delete one property",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Opération réussis",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Non authentifié"
+                    },
+                    "403": {
+                        "description": "Accès refusé"
+                    },
+                    "400": {
+                        "description": "Requête erroné"
+                    },
+                    "404": {
+                        "description": "Page introuvable"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

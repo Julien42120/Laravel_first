@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\PropertyController;
-use App\Models\Property;
+use App\Nova\Property as PropertyResource;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,5 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/property', [PropertyController::class, "index"]);
+Route::get('/property', [PropertyController::class, "Index"]);
 Route::get('/appartement', [PropertyController::class, "All"]);
+Route::get('/appartement/{id}', [PropertyController::class, 'Get']);
+// Route::get('nova', [PropertyResource::class, 'fields']);
