@@ -105,7 +105,7 @@ class PropertyController extends Controller
 
     public function show($id)
     {
-        $property = Property::find($id);
+        $property = Property::findOrFail($id);
         if ($property == null) {
             throw new Exception("Propriété inexistante", 404);
         }
@@ -169,6 +169,9 @@ class PropertyController extends Controller
         ]);
 
         $property = Property::findOrFail($id);
+        if ($property == null) {
+            throw new Exception("Propriété inexistante", 404);
+        }
 
         $property->update([
             'title' => $request->title,
